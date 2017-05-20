@@ -1,0 +1,57 @@
+$ ansible-playbook subset.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco auth_pass=cisco"
+
+PLAY [gns3] ********************************************************************
+
+TASK [ios_facts] ***************************************************************
+ok: [R2]
+ok: [R1]
+
+TASK [debug] *******************************************************************
+ok: [R1] => {
+    "msg": {
+        "ansible_facts": {
+            "ansible_net_config": "Building configuration...\n\nCurrent configuration : 1103 bytes\n!\nversion 12.4\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname 
+R1\n!\nboot-start-marker\nboot-end-marker\n!\nenable secret 5 $1$s7yM$FR9732Ruv1SijXKH7i2ui1\n!\naaa new-model\n!\n!\naaa authentication login default local\n!\n!\naaa session-id common\nmemory-size iomem 5\nno ip icmp rate-limit unreachable\nip 
+cef\n!\n!\n!\n!\nno ip domain lookup\nip domain name lab.local\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nusername ******** secret 5 $1$vP4v$lRWDR7GyW2sJsCM.iskcm0\narchive\n log config\n  hidekeys\n! 
+\n!\n!\n!\nip tcp synwait-time 5\n!\n!\n!\n!\ninterface FastEthernet0/0\n ip address 192.168.0.210 255.255.255.0\n duplex auto\n speed auto\n!\ninterface FastEthernet0/1\n no ip address\n shutdown\n duplex auto\n speed auto\n!\nip forward-protocol nd\n!\n!\nno ip 
+http server\nno ip http secure-server\n!\nno cdp log mismatch duplex\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\nline aux 0\n exec-timeout 0 0\n privilege level 15\n 
+logging synchronous\nline vty 0 4\n!\n!\nend\n",
+            "ansible_net_gather_subset": [
+                "default",
+                "config"
+            ],
+            "ansible_net_hostname": "R1",
+            "ansible_net_image": "tftp://255.255.255.255/unknown",
+            "ansible_net_model": "3745 (R7000) processor",
+            "ansible_net_serialnum": "FTX0945W0MY",
+            "ansible_net_version": "12.4(15)T14"
+        },
+        "changed": false
+    }
+}
+ok: [R2] => {
+    "msg": {
+        "ansible_facts": {
+            "ansible_net_config": "Building configuration...\n\nCurrent configuration : 1097 bytes\n!\nversion 12.4\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname 
+R2\n!\nboot-start-marker\nboot-end-marker\n!\nenable secret 5 $1$lv1i$ECRr.MsHYDO4JA2GjWoCw.\n!\naaa new-model\n!\n!\naaa authentication login default local\n!\n!\naaa session-id common\nmemory-size iomem 5\nno ip icmp rate-limit unreachable\nip 
+cef\n!\n!\n!\n!\nno ip domain lookup\nip domain name lab\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nusername ******** secret 5 $1$mbd6$WY6vhrExkBj2EUtwEWema.\narchive\n log config\n  hidekeys\n! 
+\n!\n!\n!\nip tcp synwait-time 5\n!\n!\n!\n!\ninterface FastEthernet0/0\n ip address 192.168.0.197 255.255.255.0\n duplex auto\n speed auto\n!\ninterface FastEthernet0/1\n no ip address\n shutdown\n duplex auto\n speed auto\n!\nip forward-protocol nd\n!\n!\nno ip 
+http server\nno ip http secure-server\n!\nno cdp log mismatch duplex\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\nline aux 0\n exec-timeout 0 0\n privilege level 15\n 
+logging synchronous\nline vty 0 4\n!\n!\nend\n",
+            "ansible_net_gather_subset": [
+                "default",
+                "config"
+            ],
+            "ansible_net_hostname": "R2",
+            "ansible_net_image": "tftp://255.255.255.255/unknown",
+            "ansible_net_model": "3745 (R7000) processor",
+            "ansible_net_serialnum": "FTX0945W0MY",
+            "ansible_net_version": "12.4(15)T14"
+        },
+        "changed": false
+    }
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0
+R2                         : ok=2    changed=0    unreachable=0    failed=0

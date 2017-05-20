@@ -1,0 +1,41 @@
+---
+
+# http://www.oznetnerd.com/cleaning-ansible-loop-outputs/
+
+# requires NTC-Ansible - Installation instructions can be found here - http://www.oznetnerd.com/installing-ntc-ansible/
+
+# Example Usage:
+# ansible-playbook show_tidy.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
+
+- hosts: "{{ hosts }}"
+  connection: local
+  gather_facts: no
+
+  vars:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      platform: "{{ platform }}"
+
+  tasks:
+  - name: ntc_show
+    ntc_show_command:
+      provider: "{{ provider }}"
+      connection: "{{ connection }}"
+      command: "{{ item }}"
+      secret: "{{ secret }}"
+    with_items:
+      - "{{ command }}"
+    register: results
+
+  - name: Clean loop output
+    set_fact:
+      clean_out: "{{ clean_out|default([]) + [item.response] }}"
+    with_items:
+      - "{{ results.results }}"
+    no_log: True
+
+  - name: Display information from 'show' output
+    debug: msg="{{ clean_out }}"
+    tags: DEBUG

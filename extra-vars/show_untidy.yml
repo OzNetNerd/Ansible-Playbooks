@@ -2,20 +2,22 @@
 
 # http://www.oznetnerd.com/ansible-extra-vars/
 
+# requires NTC-Ansible - Installation instructions can be found here - http://www.oznetnerd.com/installing-ntc-ansible/
+
 # Example Usage:
-# ansible-playbook show.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
+# ansible-playbook show_untidy.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
 
 - hosts: "{{ hosts }}"
   connection: local
   gather_facts: no
-
+ 
   vars:
     provider:
       host: "{{ ansible_host }}"
       username: "{{ username }}"
       password: "{{ password }}"
       platform: "{{ platform }}"
-
+ 
   tasks:
   - name: ntc_show
     ntc_show_command:
@@ -26,7 +28,7 @@
     with_items:
       - "{{ command }}"
     register: results
-
+ 
   - name: Display output
     debug: msg="{{ item.response[0] }}"
     with_items:

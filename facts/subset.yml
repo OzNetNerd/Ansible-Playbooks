@@ -1,0 +1,28 @@
+---
+
+# IOS Facts - https://docs.ansible.com/ansible/ios_facts_module.html
+
+# Example Usage:
+# ansible-playbook subset.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco auth_pass=cisco"
+
+- hosts: "{{ hosts }}"
+  connection: local
+  gather_facts: no
+
+  vars:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      auth_pass: "{{ auth_pass }}"
+
+  tasks:
+    - ios_facts:
+        host: "{{ ansible_host }}"
+        provider: "{{ provider }}"
+        gather_subset: config
+        authorize: yes
+        auth_pass: "{{ auth_pass }}"
+      register: output
+
+    - debug: msg="{{ output }}"
