@@ -1,0 +1,89 @@
+$ ansible-playbook show_tidy.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
+
+PLAY [gns3] ********************************************************************
+
+TASK [ntc_show] ****************************************************************
+ok: [R1] => (item=show version)
+ok: [R2] => (item=show version)
+ok: [R1] => (item=show ip interface brief)
+ok: [R2] => (item=show ip interface brief)
+
+TASK [Clean loop output] *******************************************************
+ok: [R1] => (item=(censored due to no_log))
+ok: [R1] => (item=(censored due to no_log))
+ok: [R2] => (item=(censored due to no_log))
+ok: [R2] => (item=(censored due to no_log))
+
+TASK [Display information from 'show' output] **********************************
+ok: [R1] => {
+    "msg": [
+        [
+            {
+                "config_register": "0x2102",
+                "hardware": [
+                    "3745"
+                ],
+                "hostname": "R1",
+                "rommon": "ROMMON",
+                "running_image": "//255.255.255.255/unknown",
+                "serial": [
+                    "FTX0945W0MY"
+                ],
+                "uptime": "2 hours, 32 minutes",
+                "version": "12.4(15)T14"
+            }
+        ],
+        [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.210",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ]
+    ]
+}
+ok: [R2] => {
+    "msg": [
+        [
+            {
+                "config_register": "0x2102",
+                "hardware": [
+                    "3745"
+                ],
+                "hostname": "R2",
+                "rommon": "ROMMON",
+                "running_image": "//255.255.255.255/unknown",
+                "serial": [
+                    "FTX0945W0MY"
+                ],
+                "uptime": "2 hours, 32 minutes",
+                "version": "12.4(15)T14"
+            }
+        ],
+        [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.197",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ]
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=3    changed=0    unreachable=0    failed=0
+R2                         : ok=3    changed=0    unreachable=0    failed=0

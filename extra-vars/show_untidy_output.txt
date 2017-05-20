@@ -1,0 +1,279 @@
+$ ansible-playbook show_untidy.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
+
+PLAY [gns3] ********************************************************************
+
+TASK [ntc_show] ****************************************************************
+ok: [R1] => (item=show version)
+ok: [R2] => (item=show version)
+ok: [R1] => (item=show ip interface brief)
+ok: [R2] => (item=show ip interface brief)
+
+TASK [Display output] **********************************************************
+ok: [R1] => (item={'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'show version', 'invocation': {'module_name': u'ntc_show_command', u'module_args': {u'username': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'delay': u'1', u'trigger_device_list': None, u'local_file': None, u'template_dir': u'ntc-templates/templates', u'use_keys': False, u'connection': u'ssh', u'use_templates': True, u'platform': u'********_ios', u'secret': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'command': u'show version', u'optional_args': {}, u'file': None, u'provider': {u'username': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'platform': u'********_ios', u'host': u'192.168.0.210', u'password': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER'}, u'host': u'192.168.0.210', u'global_delay_factor': u'1', u'password': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'port': None, u'key_file': None, u'index_file': u'index'}}, u'response': [{u'running_image': 
+u'//255.255.255.255/unknown', u'hostname': u'R1', u'uptime': u'2 hours, 11 minutes', u'config_register': u'0x2102', u'hardware': [u'3745'], u'version': u'12.4(15)T14', u'serial': [u'FTX0945W0MY'], u'rommon': u'ROMMON'}], u'response_list': []}) => {
+    "item": {
+        "changed": false,
+        "invocation": {
+            "module_args": {
+                "command": "show version",
+                "connection": "ssh",
+                "delay": "1",
+                "file": null,
+                "global_delay_factor": "1",
+                "host": "192.168.0.210",
+                "index_file": "index",
+                "key_file": null,
+                "local_file": null,
+                "optional_args": {},
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "platform": "********_ios",
+                "port": null,
+                "provider": {
+                    "host": "192.168.0.210",
+                    "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                    "platform": "********_ios",
+                    "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+                },
+                "secret": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "template_dir": "ntc-templates/templates",
+                "trigger_device_list": null,
+                "use_keys": false,
+                "use_templates": true,
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            },
+            "module_name": "ntc_show_command"
+        },
+        "item": "show version",
+        "response": [
+            {
+                "config_register": "0x2102",
+                "hardware": [
+                    "3745"
+                ],
+                "hostname": "R1",
+                "rommon": "ROMMON",
+                "running_image": "//255.255.255.255/unknown",
+                "serial": [
+                    "FTX0945W0MY"
+                ],
+                "uptime": "2 hours, 11 minutes",
+                "version": "12.4(15)T14"
+            }
+        ],
+        "response_list": []
+    },
+    "msg": {
+        "config_register": "0x2102",
+        "hardware": [
+            "3745"
+        ],
+        "hostname": "R1",
+        "rommon": "ROMMON",
+        "running_image": "//255.255.255.255/unknown",
+        "serial": [
+            "FTX0945W0MY"
+        ],
+        "uptime": "2 hours, 11 minutes",
+        "version": "12.4(15)T14"
+    }
+}
+ok: [R1] => (item={'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'show ip interface brief', 'invocation': {'module_name': u'ntc_show_command', u'module_args': {u'username': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'delay': u'1', u'trigger_device_list': None, u'local_file': None, u'template_dir': u'ntc-templates/templates', u'use_keys': False, u'connection': u'ssh', u'use_templates': True, u'platform': u'********_ios', u'secret': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'command': u'show ip interface brief', u'optional_args': {}, u'file': None, u'provider': {u'username': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'platform': u'********_ios', u'host': u'192.168.0.210', u'password': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER'}, u'host': u'192.168.0.210', u'global_delay_factor': u'1', u'password': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'port': None, u'key_file': None, u'index_file': u'index'}}, u'response': [{u'status': u'up', u'intf': 
+u'FastEthernet0/0', u'ipaddr': u'192.168.0.210', u'proto': u'up'}, {u'status': u'administratively down', u'intf': u'FastEthernet0/1', u'ipaddr': u'unassigned', u'proto': u'down'}], u'response_list': []}) => {
+    "item": {
+        "changed": false,
+        "invocation": {
+            "module_args": {
+                "command": "show ip interface brief",
+                "connection": "ssh",
+                "delay": "1",
+                "file": null,
+                "global_delay_factor": "1",
+                "host": "192.168.0.210",
+                "index_file": "index",
+                "key_file": null,
+                "local_file": null,
+                "optional_args": {},
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "platform": "********_ios",
+                "port": null,
+                "provider": {
+                    "host": "192.168.0.210",
+                    "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                    "platform": "********_ios",
+                    "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+                },
+                "secret": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "template_dir": "ntc-templates/templates",
+                "trigger_device_list": null,
+                "use_keys": false,
+                "use_templates": true,
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            },
+            "module_name": "ntc_show_command"
+        },
+        "item": "show ip interface brief",
+        "response": [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.210",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ],
+        "response_list": []
+    },
+    "msg": {
+        "intf": "FastEthernet0/0",
+        "ipaddr": "192.168.0.210",
+        "proto": "up",
+        "status": "up"
+    }
+}
+ok: [R2] => (item={'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'show version', 'invocation': {'module_name': u'ntc_show_command', u'module_args': {u'username': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'delay': u'1', u'trigger_device_list': None, u'local_file': None, u'template_dir': u'ntc-templates/templates', u'use_keys': False, u'connection': u'ssh', u'use_templates': True, u'platform': u'********_ios', u'secret': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'command': u'show version', u'optional_args': {}, u'file': None, u'provider': {u'username': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'platform': u'********_ios', u'host': u'192.168.0.197', u'password': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER'}, u'host': u'192.168.0.197', u'global_delay_factor': u'1', u'password': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'port': None, u'key_file': None, u'index_file': u'index'}}, u'response': [{u'running_image': 
+u'//255.255.255.255/unknown', u'hostname': u'R2', u'uptime': u'2 hours, 11 minutes', u'config_register': u'0x2102', u'hardware': [u'3745'], u'version': u'12.4(15)T14', u'serial': [u'FTX0945W0MY'], u'rommon': u'ROMMON'}], u'response_list': []}) => {
+    "item": {
+        "changed": false,
+        "invocation": {
+            "module_args": {
+                "command": "show version",
+                "connection": "ssh",
+                "delay": "1",
+                "file": null,
+                "global_delay_factor": "1",
+                "host": "192.168.0.197",
+                "index_file": "index",
+                "key_file": null,
+                "local_file": null,
+                "optional_args": {},
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "platform": "********_ios",
+                "port": null,
+                "provider": {
+                    "host": "192.168.0.197",
+                    "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                    "platform": "********_ios",
+                    "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+                },
+                "secret": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "template_dir": "ntc-templates/templates",
+                "trigger_device_list": null,
+                "use_keys": false,
+                "use_templates": true,
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            },
+            "module_name": "ntc_show_command"
+        },
+        "item": "show version",
+        "response": [
+            {
+                "config_register": "0x2102",
+                "hardware": [
+                    "3745"
+                ],
+                "hostname": "R2",
+                "rommon": "ROMMON",
+                "running_image": "//255.255.255.255/unknown",
+                "serial": [
+                    "FTX0945W0MY"
+                ],
+                "uptime": "2 hours, 11 minutes",
+                "version": "12.4(15)T14"
+            }
+        ],
+        "response_list": []
+    },
+    "msg": {
+        "config_register": "0x2102",
+        "hardware": [
+            "3745"
+        ],
+        "hostname": "R2",
+        "rommon": "ROMMON",
+        "running_image": "//255.255.255.255/unknown",
+        "serial": [
+            "FTX0945W0MY"
+        ],
+        "uptime": "2 hours, 11 minutes",
+        "version": "12.4(15)T14"
+    }
+}
+ok: [R2] => (item={'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'show ip interface brief', 'invocation': {'module_name': u'ntc_show_command', u'module_args': {u'username': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'delay': u'1', u'trigger_device_list': None, u'local_file': None, u'template_dir': u'ntc-templates/templates', u'use_keys': False, u'connection': u'ssh', u'use_templates': True, u'platform': u'********_ios', u'secret': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'command': u'show ip interface brief', u'optional_args': {}, u'file': None, u'provider': {u'username': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'platform': u'********_ios', u'host': u'192.168.0.197', u'password': 
+u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER'}, u'host': u'192.168.0.197', u'global_delay_factor': u'1', u'password': u'VALUE_SPECIFIED_IN_NO_LOG_PARAMETER', u'port': None, u'key_file': None, u'index_file': u'index'}}, u'response': [{u'status': u'up', u'intf': 
+u'FastEthernet0/0', u'ipaddr': u'192.168.0.197', u'proto': u'up'}, {u'status': u'administratively down', u'intf': u'FastEthernet0/1', u'ipaddr': u'unassigned', u'proto': u'down'}], u'response_list': []}) => {
+    "item": {
+        "changed": false,
+        "invocation": {
+            "module_args": {
+                "command": "show ip interface brief",
+                "connection": "ssh",
+                "delay": "1",
+                "file": null,
+                "global_delay_factor": "1",
+                "host": "192.168.0.197",
+                "index_file": "index",
+                "key_file": null,
+                "local_file": null,
+                "optional_args": {},
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "platform": "********_ios",
+                "port": null,
+                "provider": {
+                    "host": "192.168.0.197",
+                    "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                    "platform": "********_ios",
+                    "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+                },
+                "secret": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                "template_dir": "ntc-templates/templates",
+                "trigger_device_list": null,
+                "use_keys": false,
+                "use_templates": true,
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            },
+            "module_name": "ntc_show_command"
+        },
+        "item": "show ip interface brief",
+        "response": [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.197",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ],
+        "response_list": []
+    },
+    "msg": {
+        "intf": "FastEthernet0/0",
+        "ipaddr": "192.168.0.197",
+        "proto": "up",
+        "status": "up"
+    }
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0
+R2                         : ok=2    changed=0    unreachable=0    failed=0
