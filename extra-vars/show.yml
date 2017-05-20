@@ -2,6 +2,9 @@
 
 # http://www.oznetnerd.com/ansible-extra-vars/
 
+# Example Usage:
+# ansible-playbook show.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show ip interface brief']"
+
 - hosts: "{{ hosts }}"
   connection: local
   gather_facts: no
