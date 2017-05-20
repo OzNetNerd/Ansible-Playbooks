@@ -1,0 +1,30 @@
+---
+
+# http://www.oznetnerd.com/ansible-extra-vars/
+
+- hosts: "{{ hosts }}"
+  connection: local
+  gather_facts: no
+
+  vars:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      platform: "{{ platform }}"
+
+  tasks:
+  - name: ntc_show
+    ntc_show_command:
+      provider: "{{ provider }}"
+      connection: "{{ connection }}"
+      command: "{{ item }}"
+      secret: "{{ secret }}"
+    with_items:
+      - "{{ command }}"
+    register: results
+
+  - name: Display output
+    debug: msg="{{ item.response[0] }}"
+    with_items:
+      - "{{ results.results }}"
