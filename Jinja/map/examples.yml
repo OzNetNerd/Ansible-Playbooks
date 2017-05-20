@@ -1,0 +1,23 @@
+---
+
+# http://www.oznetnerd.com/jinja2-map-filter/
+
+# Example Usage:
+# ansible-playbook -i localhost, examples.yml
+
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    names:
+      - first: Paul
+        last: Thompson
+      - first: Rod
+        last: Johnson
+ 
+  tasks:
+    - debug: msg={{ names | map(attribute='first') | list }}
+    - debug: msg={{ names | map(attribute='last') | list }}
+    - debug: msg={{ names | map('upper') | list }}
+    - debug: msg={{ names | map(attribute='last') | map('upper') | list }}

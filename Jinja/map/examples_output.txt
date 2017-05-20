@@ -1,0 +1,38 @@
+$ ansible-playbook -i localhost, temp.yml
+
+PLAY [localhost] ***************************************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "msg": [
+        "Paul",
+        "Rod"
+    ]
+}
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "msg": [
+        "Thompson",
+        "Johnson"
+    ]
+}
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "msg": [
+        "{U'LAST': U'THOMPSON', U'FIRST': U'PAUL'}",
+        "{U'LAST': U'JOHNSON', U'FIRST': U'ROD'}"
+    ]
+}
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "msg": [
+        "THOMPSON",
+        "JOHNSON"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=0    unreachable=0    failed=0

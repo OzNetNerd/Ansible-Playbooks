@@ -1,0 +1,67 @@
+$ ansible-playbook interface_map.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command='show ip interface brief'"
+
+PLAY [gns3] ********************************************************************
+
+TASK [ntc_show] ****************************************************************
+ok: [R1]
+ok: [R2]
+
+TASK [DEBUG - print original results] ******************************************
+ok: [R1] => {
+    "msg": {
+        "changed": false,
+        "response": [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.210",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ],
+        "response_list": []
+    }
+}
+ok: [R2] => {
+    "msg": {
+        "changed": false,
+        "response": [
+            {
+                "intf": "FastEthernet0/0",
+                "ipaddr": "192.168.0.197",
+                "proto": "up",
+                "status": "up"
+            },
+            {
+                "intf": "FastEthernet0/1",
+                "ipaddr": "unassigned",
+                "proto": "down",
+                "status": "administratively down"
+            }
+        ],
+        "response_list": []
+    }
+}
+
+TASK [DEBUG - print modified results] ******************************************
+ok: [R1] => {
+    "msg": [
+        "FastEthernet0/0",
+        "FastEthernet0/1"
+    ]
+}
+ok: [R2] => {
+    "msg": [
+        "FastEthernet0/0",
+        "FastEthernet0/1"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=3    changed=0    unreachable=0    failed=0
+R2                         : ok=3    changed=0    unreachable=0    failed=0
