@@ -1,0 +1,35 @@
+---
+
+# http://www.oznetnerd.com/looping-dictionaries-ansible/
+
+# requires NTC-Ansible - Installation instructions can be found here - http://www.oznetnerd.com/installing-ntc-ansible/
+
+# Example Usage:
+# $ ansible-playbook extract_ip.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show cdp neighbor detail']"
+
+- hosts: "{{ hosts }}"
+  connection: local
+  gather_facts: no
+ 
+  vars:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      platform: "{{ platform }}"
+ 
+  tasks:
+  - name: ntc_show
+    ntc_show_command:
+      provider: "{{ provider }}"
+      connection: "{{ connection }}"
+      command: "{{ item }}"
+      secret: "{{ secret }}"
+    with_items:
+      - "{{ command }}"
+    register: output
+
+  - name: Display output
+    debug: msg="The key is {{ item.key }} and the value is {{ item.value }}"
+    with_dict: "{{ output.results[1].response[0] }}"
+

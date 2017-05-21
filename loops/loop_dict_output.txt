@@ -1,0 +1,99 @@
+$  ansible-playbook loop_dict.yml -i hosts.ini --extra-vars "hosts=gns3 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show cdp neighbor detail']"
+
+PLAY [gns3] ********************************************************************
+
+TASK [ntc_show] ****************************************************************
+ok: [R2] => (item=show version)
+ok: [R1] => (item=show version)
+ok: [R2] => (item=show cdp neighbor detail)
+ok: [R1] => (item=show cdp neighbor detail)
+
+TASK [Display output] **********************************************************
+ok: [R1] => (item={'key': u'software_version', 'value': u'Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)'}) => {
+    "item": {
+        "key": "software_version",
+        "value": "Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)"
+    },
+    "msg": "The key is software_version and the value is Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)"
+}
+ok: [R1] => (item={'key': u'local_port', 'value': u'FastEthernet0/0'}) => {
+    "item": {
+        "key": "local_port",
+        "value": "FastEthernet0/0"
+    },
+    "msg": "The key is local_port and the value is FastEthernet0/0"
+}
+ok: [R1] => (item={'key': u'remote_port', 'value': u'FastEthernet0/0'}) => {
+    "item": {
+        "key": "remote_port",
+        "value": "FastEthernet0/0"
+    },
+    "msg": "The key is remote_port and the value is FastEthernet0/0"
+}
+ok: [R1] => (item={'key': u'destination_host', 'value': u'R2.lab'}) => {
+    "item": {
+        "key": "destination_host",
+        "value": "R2.lab"
+    },
+    "msg": "The key is destination_host and the value is R2.lab"
+}
+ok: [R1] => (item={'key': u'management_ip', 'value': u'192.168.0.197'}) => {
+    "item": {
+        "key": "management_ip",
+        "value": "192.168.0.197"
+    },
+    "msg": "The key is management_ip and the value is 192.168.0.197"
+}
+ok: [R1] => (item={'key': u'platform', 'value': u'Cisco 3745'}) => {
+    "item": {
+        "key": "platform",
+        "value": "Cisco 3745"
+    },
+    "msg": "The key is platform and the value is Cisco 3745"
+}
+ok: [R2] => (item={'key': u'remote_port', 'value': u'FastEthernet0/0'}) => {
+    "item": {
+        "key": "remote_port",
+        "value": "FastEthernet0/0"
+    },
+    "msg": "The key is remote_port and the value is FastEthernet0/0"
+}
+ok: [R2] => (item={'key': u'software_version', 'value': u'Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)'}) => {
+    "item": {
+        "key": "software_version",
+        "value": "Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)"
+    },
+    "msg": "The key is software_version and the value is Cisco IOS Software, 3700 Software (C3745-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)"
+}
+ok: [R2] => (item={'key': u'platform', 'value': u'Cisco 3745'}) => {
+    "item": {
+        "key": "platform",
+        "value": "Cisco 3745"
+    },
+    "msg": "The key is platform and the value is Cisco 3745"
+}
+ok: [R2] => (item={'key': u'destination_host', 'value': u'R1.lab.local'}) => {
+    "item": {
+        "key": "destination_host",
+        "value": "R1.lab.local"
+    },
+    "msg": "The key is destination_host and the value is R1.lab.local"
+}
+ok: [R2] => (item={'key': u'local_port', 'value': u'FastEthernet0/0'}) => {
+    "item": {
+        "key": "local_port",
+        "value": "FastEthernet0/0"
+    },
+    "msg": "The key is local_port and the value is FastEthernet0/0"
+}
+ok: [R2] => (item={'key': u'management_ip', 'value': u'192.168.0.210'}) => {
+    "item": {
+        "key": "management_ip",
+        "value": "192.168.0.210"
+    },
+    "msg": "The key is management_ip and the value is 192.168.0.210"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0
+R2                         : ok=2    changed=0    unreachable=0    failed=0
