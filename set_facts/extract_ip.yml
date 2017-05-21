@@ -1,0 +1,37 @@
+---
+
+# http://www.oznetnerd.com/understanding-ansible-output-structure/
+
+# requires NTC-Ansible - Installation instructions can be found here - http://www.oznetnerd.com/installing-ntc-ansible/
+
+# Example Usage:
+# $ ansible-playbook extract_ip.yml -i hosts.ini --extra-vars "hosts=R1 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show cdp neighbor detail']"
+
+- hosts: "{{ hosts }}"
+  connection: local
+  gather_facts: no
+ 
+  vars:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      platform: "{{ platform }}"
+ 
+  tasks:
+  - name: ntc_show
+    ntc_show_command:
+      provider: "{{ provider }}"
+      connection: "{{ connection }}"
+      command: "{{ item }}"
+      secret: "{{ secret }}"
+    with_items:
+      - "{{ command }}"
+    register: output
+
+  - name: set fact
+    set_fact:
+      mgmt_ip: "{{ output.results[1].response[0].management_ip }}"
+
+  - name: Display output
+    debug: msg="{{ mgmt_ip }}"

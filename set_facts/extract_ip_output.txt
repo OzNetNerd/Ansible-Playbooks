@@ -1,0 +1,18 @@
+$ ansible-playbook extract_ip.yml -i hosts.ini --extra-vars "hosts=R1 username=cisco password=cisco connection=ssh platform=cisco_ios secret=cisco command=['show version','show cdp neighbor detail']"
+
+PLAY [R1] **********************************************************************
+
+TASK [ntc_show] ****************************************************************
+ok: [R1] => (item=show version)
+ok: [R1] => (item=show cdp neighbor detail)
+
+TASK [set fact] ****************************************************************
+ok: [R1]
+
+TASK [Display output] **********************************************************
+ok: [R1] => {
+    "msg": "192.168.0.197"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=3    changed=0    unreachable=0    failed=0
